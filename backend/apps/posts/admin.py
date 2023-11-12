@@ -1,5 +1,20 @@
+from django import forms
 from django.contrib import admin
-from .models import Post
-# Register your models here.
+from ckeditor.widgets import CKEditorWidget
 
-admin.site.register(Post)
+from .models import Post, PostImage
+
+class PostAdminForm(forms.ModelForm):
+    body = forms.CharField(widget=CKEditorWidget())
+    class Meta:
+        model = Post
+        exclude = []
+
+class PostAdmin(admin.ModelAdmin):
+    form = PostAdminForm
+
+class PostImageAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(PostImage, PostImageAdmin)
