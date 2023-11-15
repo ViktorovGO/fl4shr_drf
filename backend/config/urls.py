@@ -1,18 +1,21 @@
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls.static import static
 import config.settings.base as settings
+
 
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.routers import DefaultRouter
 
 from posts.views import PostViewSet
+from videos.views import VideoViewSet
 
 schema_view = get_swagger_view(title='Fl4shr API')
 
 router = DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
+router.register(r'videos', VideoViewSet, basename='videos')
 
 
 urlpatterns = [

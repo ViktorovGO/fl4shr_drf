@@ -47,7 +47,8 @@ THIRD_PARTY = [
 
 LOCAL_APPS = [
     'users',
-    'posts'
+    'posts',
+    'videos',
   
 ]
 
